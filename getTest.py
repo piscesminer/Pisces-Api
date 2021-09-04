@@ -14,8 +14,8 @@ def testBle():
     raw = info.split("Devices:")
     dev = raw[1].split("\n")
     if(len(dev)>3):
-        hci0 = dev[1].split("\t")[1]
-        hci1 = dev[3].split("\t")[1]
+        hci1 = dev[1].split("\t")[2]
+        hci0 = dev[2].split("\t")[2]
         return json.dumps({"hci0":hci0,"hci1":hci1})
     else:
         return router.server_error();
@@ -55,4 +55,4 @@ def onboardingEcc():
         return json.dumps({"onboarding_key":info})
 
 if __name__ == '__main__':
-    print(api.decode("233%20wdnmd"))
+    print(testBle())
