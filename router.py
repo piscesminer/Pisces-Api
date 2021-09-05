@@ -10,6 +10,7 @@ import getIp
 import getCpu
 import getMiner
 import getTest
+import getGps
 
 '''
 🍺路由系统，根据路由系统进行跳转
@@ -36,11 +37,17 @@ def router(client,method,path,parame):
         api.responsing(client,getTest.shell(parame[0][1]));
     elif(path == "/api/test/ble"):
         api.responsing(client,getTest.testBle());
+    elif(path == "/api/test/gps"):
+        api.responsing(client,getGps.reader());
     elif(path == "/api/test/ecc"):
         api.responsing(client,getTest.testEcc());
     elif(path == "/api/test/ecc/provision"):
         api.responsing(client,getTest.provisionEcc());
     elif(path == "/api/test/ecc/onboarding"):
+        api.responsing(client,getTest.onboardingEcc());
+    elif(path == "/api/test/minerSn/read"):
+        api.responsing(client,getTest.onboardingEcc());
+    elif(path == "/api/test/minerSn/write"):
         api.responsing(client,getTest.onboardingEcc());
         ##🍺测试接口
     elif(path == "/parame"):

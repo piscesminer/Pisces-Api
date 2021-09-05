@@ -3,6 +3,7 @@ import os
 import router
 import json
 import api
+import RPi.GPIO as GPIO
 
 def shell(action):
     out = os.popen(action)
@@ -54,5 +55,36 @@ def onboardingEcc():
     else:
         return json.dumps({"onboarding_key":info})
 
+##E2相关接口
+def e2init():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(27,GPIO.OUT)
+    return GPIO.output(27,GPIO.LOW)
+
+def e2write(data):
+
+    basecmd = "i2cset -f -y 1 0x50 "
+
+def e2read():
+    basecmd = "i2cget -f -y 1 0x50 "
+    length = 14;
+    data = [];
+    for i in range(length):
+        address = e2decode(i);
+        cmd = shell(basecmd+address);
+        ret = cmd.split("\n")[0]
+        data.append(ret);
+    ret = ""
+    for result in data:
+        ret = ret+bytes(int(result,16))
+    ret = json.dumps({'minerSn':ret,'raw':data})
+    return ret
+
+def e2decode(data):
+    add = 2-len(bytes(data));
+    for i in range(add):
+        data = "0"+bytes(data);
+    return "0x"+bytes(data);
+
 if __name__ == '__main__':
-    print(testBle())
+    print(e2read())
