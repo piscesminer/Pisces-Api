@@ -45,6 +45,8 @@ def router(client,method,path,parame):
         api.responsing(client,getTest.provisionEcc());
     elif(path == "/api/test/ecc/onboarding"):
         api.responsing(client,getTest.onboardingEcc());
+    elif(path == "/api/test/minerSn/init"):
+        api.responsing(client,getTest.e2init());
     elif(path == "/api/test/minerSn/read"):
         api.responsing(client,getTest.e2read());
     elif(path == "/api/test/minerSn/write"):

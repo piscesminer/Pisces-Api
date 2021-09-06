@@ -18,6 +18,9 @@ def testBle():
         hci1 = dev[1].split("\t")[2]
         hci0 = dev[2].split("\t")[2]
         return json.dumps({"hci0":hci0,"hci1":hci1})
+    elif(len(dev)==3):
+        hci0 = dev[1].split("\t")[2]
+        return json.dumps({"hci0":hci0})
     else:
         return router.server_error();
 
@@ -59,7 +62,8 @@ def onboardingEcc():
 def e2init():
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(27,GPIO.OUT)
-    return GPIO.output(27,GPIO.LOW)
+    GPIO.output(27,GPIO.LOW)
+    return json.dumps({"code":200 , "data":"success"})
 
 def e2write(data):
     basecmd = "i2cset -f -y 1 0x50 "
@@ -85,10 +89,8 @@ def e2read():
     return ret
 
 def e2decode(data):
-    add = 2-len(bytes(data));
-    for i in range(add):
-        data = "0"+bytes(data);
-    return "0x"+bytes(data);
+    add = int(data);
+    return hex(add);
 
 def e2encode(data):
     raw = '-'.join(data);
@@ -99,4 +101,4 @@ def e2encode(data):
     return ff16
 
 if __name__ == '__main__':
-    print(e2write("32123543548315"))
+    print(testBle())
