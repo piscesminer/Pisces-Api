@@ -62,8 +62,12 @@ def e2init():
     return GPIO.output(27,GPIO.LOW)
 
 def e2write(data):
-
     basecmd = "i2cset -f -y 1 0x50 "
+    array = e2encode(data);
+    length = 14
+    for ret in range(length) :
+        cmd = shell(basecmd+hex(ret)+" "+array[ret]);
+    return e2read();
 
 def e2read():
     basecmd = "i2cget -f -y 1 0x50 "
@@ -86,5 +90,13 @@ def e2decode(data):
         data = "0"+bytes(data);
     return "0x"+bytes(data);
 
+def e2encode(data):
+    raw = '-'.join(data);
+    data = raw.split('-');
+    ff16 = [];
+    for i in data:
+        ff16.append(hex(int(i)))
+    return ff16
+
 if __name__ == '__main__':
-    print(e2read())
+    print(e2write("32123543548315"))
