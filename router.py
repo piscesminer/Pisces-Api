@@ -48,7 +48,7 @@ def router(client,method,path,parame):
     elif(path == "/api/test/minerSn/read"):
         api.responsing(client,getTest.e2read());
     elif(path == "/api/test/minerSn/write"):
-        api.responsing(client,getTest.e2write());
+        api.responsing(client,getTest.e2write(parame[0][1]));
         ##🍺测试接口
     elif(path == "/parame"):
         api.responsing(client,json.dumps(parame));

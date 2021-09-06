@@ -67,7 +67,7 @@ def e2write(data):
     length = 14
     for ret in range(length) :
         cmd = shell(basecmd+hex(ret)+" "+array[ret]);
-    return e2read();
+    return data;
 
 def e2read():
     basecmd = "i2cget -f -y 1 0x50 "
