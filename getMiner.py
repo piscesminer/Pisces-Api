@@ -19,5 +19,17 @@ def print_keys():
         return json.dumps(ret)
     else :
         return router.server_error();
+
+def info_height():
+    try:
+        raw = MinerInfo("info height");
+        row = raw.split('\n')[0]
+        BlockAge = row.split("\t\t")[0];
+        SyncHeight = row.split("\t\t")[1];
+        return json.dumps({'BlockAge':BlockAge,'SyncHeight':SyncHeight});
+    except:
+        return router.server_error();
+
+
 if __name__ == '__main__':
-    print(print_keys())
+    print(info_height())

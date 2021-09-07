@@ -32,6 +32,8 @@ def router(client,method,path,parame):
         ##🍺设备Miner信息
     elif(path == "/api/miner/keys"):
         api.responsing(client,miner_keys());
+    elif(path == "/api/miner/sync"):
+        api.responsing(client,getMiner.info_height());
         ##🍺测试相关debug接口
     elif(path == "/api/test/shell"):
         api.responsing(client,getTest.shell(parame[0][1]));
