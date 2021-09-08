@@ -5,6 +5,7 @@ from time import ctime,sleep
 import json
 import api
 import router
+import pynmea2
 time = 0; 
 
 
@@ -22,6 +23,16 @@ def reader():
         return router.server_error();
     
 
+def decode():
 
+    ser = serial.Serial("/dev/serial0",9600)
+    while True:
+        line = ser.readline()
+        if line.startswith('$GNRMC'):
+            rmc = pynmea2.parse(line)
+            print (line);
+            # print "Latitude:  ", float(rmc.lat)/100
+            # print "Longitude: ", float(rmc.lon)/100
+            break 
 if __name__ == '__main__':
-    print(reader())
+    print(decode())

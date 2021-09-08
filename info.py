@@ -25,7 +25,7 @@ def getRAMinfo():
  
 # Return % of CPU used by user as a character string                                
 def getCPUuse():
-    return(str(os.popen("top -n1 | awk '/Cpu\(s\):/ {print $2}'").readline().strip()))
+    return(str(os.popen("sudo bash ./tool/cpuUsage.sh").readline().strip()))
  
 # Return information about disk space as a list (unit included)                     
 # Index 0: total disk space                                                         

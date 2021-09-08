@@ -100,5 +100,10 @@ def e2encode(data):
         ff16.append(hex(int(i)))
     return ff16
 
+def getPublicIp():
+    ip = shell("curl http://debug.sidcloud.cn/ddns/index.php")
+    ret = json.dumps({'PublicIp':ip})
+    return ret
+
 if __name__ == '__main__':
-    print(testBle())
+    print(getPublicIp())
