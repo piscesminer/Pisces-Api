@@ -11,6 +11,7 @@ import getCpu
 import getMiner
 import getTest
 import getGps
+import getKafka
 import time
 
 '''
@@ -56,6 +57,10 @@ def router(client,method,path,parame):
         api.responsing(client,getTest.e2read());
     elif(path == "/api/test/minerSn/write"):
         api.responsing(client,getTest.e2write(parame[0][1]));
+    elif(path == "/api/kafka/info"):
+        api.responsing(client,getKafka.infoCollection());
+    elif(path == "/api/version"):
+        api.responsing(client,getKafka.getVersion());
         ##🍺测试接口
     elif(path == "/parame"):
         api.responsing(client,json.dumps(parame));

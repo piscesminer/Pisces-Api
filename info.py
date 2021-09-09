@@ -33,7 +33,7 @@ def getCPUuse():
 # Index 2: remaining disk space                                                     
 # Index 3: percentage of disk used                                                  
 def getDiskSpace():
-    p = os.popen("df -h /")
+    p = os.popen("df -m /")
     i = 0
     while 1:
         i = i +1
@@ -85,7 +85,7 @@ def init():
     DISK_stats = getDiskSpace()
     DISK_total = DISK_stats[0]
     DISK_used = DISK_stats[1]
-    DISK_perc = DISK_stats[3]
+    DISK_perc = DISK_stats[3].split("%")[0]
     return jsonType(CPU_temp,CPU_usage,str(RAM_total),str(RAM_used),str(RAM_free),str(DISK_total),str(DISK_used),str(DISK_perc))
 
 

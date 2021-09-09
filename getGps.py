@@ -35,4 +35,4 @@ def decode():
             # print "Longitude: ", float(rmc.lon)/100
             break 
 if __name__ == '__main__':
-    print(decode())
+    print(reader())
