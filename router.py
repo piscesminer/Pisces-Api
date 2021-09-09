@@ -11,6 +11,7 @@ import getCpu
 import getMiner
 import getTest
 import getGps
+import time
 
 '''
 🍺路由系统，根据路由系统进行跳转
@@ -47,6 +48,8 @@ def router(client,method,path,parame):
         api.responsing(client,getTest.provisionEcc());
     elif(path == "/api/test/ecc/onboarding"):
         api.responsing(client,getTest.onboardingEcc());
+    elif(path == "/api/test/ecc/provisionOnboard"):
+        api.responsing(client,provision_onboard());
     elif(path == "/api/test/minerSn/init"):
         api.responsing(client,getTest.e2init());
     elif(path == "/api/test/minerSn/read"):
@@ -98,3 +101,8 @@ def hotspot_cpuinfo ():
 #🔥获取Miner onboading 信息
 def miner_keys ():
     return getMiner.print_keys();
+
+def provision_onboard():
+    getTest.provisionEcc();
+    time.sleep(3);
+    return getTest.onboardingEcc()
