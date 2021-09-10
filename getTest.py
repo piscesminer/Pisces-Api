@@ -4,6 +4,7 @@ import router
 import json
 import api
 import RPi.GPIO as GPIO
+import time
 
 def shell(action):
     out = os.popen(action)
@@ -71,6 +72,8 @@ def e2init():
     return json.dumps({"code":200 , "data":"success"})
 
 def e2write(data):
+    e2init()
+    time.sleep(1);
     basecmd = "i2cset -f -y 1 0x50 "
     array = e2encode(data);
     length = 14
