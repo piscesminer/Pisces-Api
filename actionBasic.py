@@ -136,9 +136,9 @@ def AdvertiseStatus():
 def AdvertiseOn():
     status = AdvertiseStatus();
     if(status=="off"):
+        shell("sudo /home/pi/config/_build/prod/rel/gateway_config/bin/gateway_config advertise on")
         return "running:"+status
     else:
-        shell("sudo /home/pi/config/_build/prod/rel/gateway_config/bin/gateway_config advertise on")
         return "succes"
 
 def AdvertiseOff():
@@ -152,11 +152,11 @@ def AdvertiseOff():
 def AdvertiseRestart():
     status = AdvertiseStatus();
     if(status=="off"):
+        AdvertiseOn();
+    else:
         AdvertiseOff()
         time.sleep(0.3);
         AdvertiseRestart();
-    else:
-        AdvertiseOn();
         return "not running" 
 
 

@@ -79,6 +79,8 @@ def router(client,method,path,parame):
         api.responsing(client,actionBasic.KafkaStatus());
     elif(path == "/api/action/KafkaOff"):
         api.responsing(client,actionBasic.KafkaOff());
+    elif(path == "/api/action/KafkaOn"):
+        api.responsing(client,actionBasic.KafkaOn());
     elif(path == "/api/action/KafkaRestart"):
         api.responsing(client,actionBasic.KafkaRestart());
     elif(path == "/api/action/MinerStatus"):
