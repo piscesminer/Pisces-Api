@@ -90,6 +90,6 @@ def gpsData():
     return ret;
 
 def getVersion():
-    f = open('./tool/version', 'r')
+    f = open('/home/pi/api/tool/version', 'r')
     version = f.read()
     return version;
