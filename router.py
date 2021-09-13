@@ -13,6 +13,7 @@ import getTest
 import getGps
 import getKafka
 import time
+import actionBasic
 
 '''
 🍺路由系统，根据路由系统进行跳转
@@ -61,6 +62,49 @@ def router(client,method,path,parame):
         api.responsing(client,getKafka.infoCollection());
     elif(path == "/api/version"):
         api.responsing(client,getKafka.getVersion());
+        ##🍺操作控制器
+    elif(path == "/api/action/PacketStatus"):
+        api.responsing(client,actionBasic.PacketStatus());
+    elif(path == "/api/action/PacketOn"):
+        api.responsing(client,actionBasic.PacketOn());
+    elif(path == "/api/action/PacketOff"):
+        api.responsing(client,actionBasic.PacketOff());
+    elif(path == "/api/action/PacketRestart"):
+        api.responsing(client,actionBasic.PacketRestart());
+    elif(path == "/api/action/ApiStatus"):
+        api.responsing(client,actionBasic.ApiStatus());
+    elif(path == "/api/action/ApiOff"):
+        api.responsing(client,actionBasic.ApiOff());
+    elif(path == "/api/action/KafkaStatus"):
+        api.responsing(client,actionBasic.KafkaStatus());
+    elif(path == "/api/action/KafkaOff"):
+        api.responsing(client,actionBasic.KafkaOff());
+    elif(path == "/api/action/KafkaRestart"):
+        api.responsing(client,actionBasic.KafkaRestart());
+    elif(path == "/api/action/MinerStatus"):
+        api.responsing(client,actionBasic.MinerStatus());
+    elif(path == "/api/action/MinerOn"):
+        api.responsing(client,actionBasic.MinerOn());
+    elif(path == "/api/action/MinerOff"):
+        api.responsing(client,actionBasic.MinerOff());
+    elif(path == "/api/action/MinerRestart"):
+        api.responsing(client,actionBasic.MinerRestart());
+    elif(path == "/api/action/ConfigStatus"):
+        api.responsing(client,actionBasic.ConfigStatus());
+    elif(path == "/api/action/ConfigOn"):
+        api.responsing(client,actionBasic.ConfigOn());
+    elif(path == "/api/action/ConfigOff"):
+        api.responsing(client,actionBasic.ConfigOff());
+    elif(path == "/api/action/ConfigRestart"):
+        api.responsing(client,actionBasic.ConfigRestart());
+    elif(path == "/api/action/AdvertiseStatus"):
+        api.responsing(client,actionBasic.AdvertiseStatus());
+    elif(path == "/api/action/AdvertiseOn"):
+        api.responsing(client,actionBasic.AdvertiseOn());
+    elif(path == "/api/action/AdvertiseOff"):
+        api.responsing(client,actionBasic.AdvertiseOff());
+    elif(path == "/api/action/AdvertiseRestart"):
+        api.responsing(client,actionBasic.AdvertiseRestart());
         ##🍺测试接口
     elif(path == "/parame"):
         api.responsing(client,json.dumps(parame));
